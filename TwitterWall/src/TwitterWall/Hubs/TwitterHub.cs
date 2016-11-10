@@ -134,7 +134,7 @@ namespace TwitterWall.Hubs
             }
         }
 
-        public void RemoveTweetImage(long imageId, string streamName)
+        public void SetTweetImageVisibility(long imageId, string streamName, bool visible)
         {
             TwitterStream ts = streamManager.GetStream(streamName);
             if (ts != null)
@@ -142,7 +142,7 @@ namespace TwitterWall.Hubs
                 MediaUrl media = ts._mediaRepo.Find(m => m.Id == imageId).SingleOrDefault();
                 if (media != null)
                 {
-                    ts._mediaRepo.SetVisibility(imageId, false);
+                    ts._mediaRepo.SetVisibility(imageId, visible);
                     Tweet tweet = ts._tweetRepo.Find(t => t.Id == media.Tweet.Id).SingleOrDefault();
                     if (tweet != null)
                     {

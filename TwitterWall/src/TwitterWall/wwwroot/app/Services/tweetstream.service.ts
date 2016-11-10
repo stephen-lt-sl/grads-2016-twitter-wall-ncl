@@ -270,9 +270,9 @@ export class TweetStream {
         this.conn.server.toggleSticky(tweetId, this.streamEvent.Name);
     }
 
-    removeTweetImage(tweetIndex: number, imageIndex: number, imageId: number): void {
-        this.conn.server.removeTweetImage(imageId, this.streamEvent.Name);
-        this.activeTweets[tweetIndex].MediaList.splice(imageIndex, 1);
+    setTweetImageVisibility(tweetIndex: number, imageIndex: number, imageId: number, visible: boolean): void {
+        this.conn.server.setTweetImageVisibility(imageId, this.streamEvent.Name, visible);
+        this.activeTweets[tweetIndex].MediaList[imageIndex].Visible = visible;
     }
 
     removeActiveTweetFromDB(id: number): void {
