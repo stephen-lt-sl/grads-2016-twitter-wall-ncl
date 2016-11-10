@@ -32,9 +32,9 @@ describe("Admin panel active tweets component", () => {
     });
 
     it("Remove image", () => {
-        component.addTweet(new Tweet(0, 0, "", "", new Date().toString(), "", "", [{ Id: 1, Url: "image url" }], false));
-        component.removeImage(0, 0, 1);
+        component.addTweet(new Tweet(0, 0, "", "", new Date().toString(), "", "", [{ Id: 1, Url: "image url", Visible: true }], false));
+        component.setImageVisibility(0, 0, 1, false);
         fixture.detectChanges();
-        expect(component.activeTweets[0].MediaList.length).toEqual(0);
+        expect(component.activeTweets[0].MediaList[0].Visible).toEqual(false);
     });
 });

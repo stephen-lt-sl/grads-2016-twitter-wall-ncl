@@ -197,7 +197,7 @@ export class BubbleComponent implements OnInit, OnDestroy {
         }
     }
 
-    renderTweetContent(tweet) {
+    renderTweetContent(tweet: Tweet) {
         const tweetTime = vagueTime.get({
             to: new Date(tweet.Date).getTime() + (new Date()).getTimezoneOffset() * 60 * 1000,
         });
@@ -218,7 +218,7 @@ export class BubbleComponent implements OnInit, OnDestroy {
           <div class="tweet-body">${tweetBody}</div>
           <div class="attached-images">
             ${
-            tweet.MediaList.slice(0, 1).map(img => `<img src=${img.Url} />`).join("")
+            tweet.MediaList.filter(img => img.Visible).slice(0, 1).map(img => `<img src=${img.Url} />`).join("")
             }
           </div>
           <span class="timestamp">${tweetTime}</span>

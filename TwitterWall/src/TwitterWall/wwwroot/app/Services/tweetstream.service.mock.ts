@@ -98,8 +98,8 @@ export class TweetStreamMock {
         }
     }
 
-    removeTweetImage(tweetIndex: number, imageIndex: number, imageId: number): void {
-        this.activeTweets[tweetIndex].MediaList.splice(imageIndex, 1);
+    setTweetImageVisibility(tweetIndex: number, imageIndex: number, imageId: number, visible: boolean): void {
+        this.activeTweets[tweetIndex].MediaList[imageIndex].Visible = visible;
         this.activeQueueChanged.next(this.activeTweets);
     }
 

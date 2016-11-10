@@ -65,6 +65,20 @@ namespace TwitterWall.Repository
             }
         }
 
+        public void SetVisibility(long id, bool visibility)
+        {
+            using (TweetContext context = GetContext())
+            {
+                MediaUrl url = Get(id);
+                if (url != null)
+                {
+                    context.Attach(url);
+                    url.Visible = visibility;
+                    context.SaveChanges();
+                }
+            }
+        }
+
         public void AddFromTweet(Tweetinvi.Models.ITweet tweet, Event ev)
         {
             using (TweetContext context = GetContext())
