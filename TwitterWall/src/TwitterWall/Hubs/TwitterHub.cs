@@ -142,7 +142,7 @@ namespace TwitterWall.Hubs
                 MediaUrl media = ts._mediaRepo.Find(m => m.Id == imageId).SingleOrDefault();
                 if (media != null)
                 {
-                    ts._mediaRepo.Remove(imageId);
+                    ts._mediaRepo.SetVisibility(imageId, false);
                     Tweet tweet = ts._tweetRepo.Find(t => t.Id == media.Tweet.Id).SingleOrDefault();
                     if (tweet != null)
                     {
