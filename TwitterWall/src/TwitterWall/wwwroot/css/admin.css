@@ -19,6 +19,12 @@
 .small-img:hover {
   border: 3px solid red;
 }
+.deleted-small-img {
+  opacity: 0.5;
+}
+.deleted-small-img:hover {
+  border: 3px solid green;
+}
 .profile-image {
   height: 70px;
   width: 70px;

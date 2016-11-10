@@ -33,7 +33,7 @@ import * as moment from "moment";
                         </td>
                         <td>
                             <div class="images-container">
-                                <img (click)="removeImage(i, imgIndex, img.Id)" class="small-img" *ngFor="let img of tweet.MediaList; let imgIndex=index" src="{{img.Url}}"/>
+                                <img [ngClass]="{'deleted-small-img': !img.Visible}" (click)="removeImage(i, imgIndex, img.Id)" class="small-img" *ngFor="let img of tweet.MediaList; let imgIndex=index" src="{{img.Url}}"/>
                             </div>
                         </td>
                         <td>
